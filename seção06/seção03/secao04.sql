@@ -23,4 +23,20 @@ INSERT INTO produtos(descricao, preco, codigo_tipo) VALUES ('Laptop', '1800', 1)
 INSERT INTO produtos(descricao, preco, codigo_tipo) VALUES ('Impr. Jato Tinta', '300', 2);
 INSERT INTO produtos(descricao, preco, codigo_tipo) VALUES ('Impr. Laser', '500', 2);
 
+#DQL
 SELECT * FROM tipos_produto;
+SELECT codigo, descricao FROM tipos_produto;
+SELECT codigo, descricao, preco, codigo_tipo FROM produtos;
+
+#Alias
+SELECT p.codigo AS cod, p.descricao AS descri, p.preco AS pre, p.codigo_tipo AS ctp FROM produtos as p;
+
+
+
+
+
+
+
+
+
+
