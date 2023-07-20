@@ -19,7 +19,12 @@
 -- INSERT INTO produtos(descricao, preco, codigo_tipo) VALUES ('Imp. JatoTinta', 1200, 2);
 -- INSERT INTO produtos(descricao, preco, codigo_tipo) VALUES ('Imp. Laser', 1200, 2);
 
+	
+UPDATE produtos SET descricao = 'celular' WHERE id = 1;	
+UPDATE tipos_produto SET descricao = 'Eletronicos' WHERE id = 2;
+
 SELECT * FROM produtos;
 SELECT p.id, p.descricao, p.preco, t.descricao AS descrição_do_tipo
 	FROM produtos AS p, tipos_produto AS t
 	WHERE p.codigo_tipo = t.id;
+
