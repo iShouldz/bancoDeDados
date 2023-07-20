@@ -23,8 +23,11 @@
 UPDATE produtos SET descricao = 'celular' WHERE id = 1;	
 UPDATE tipos_produto SET descricao = 'Eletronicos' WHERE id = 2;
 
-SELECT * FROM produtos;
-SELECT p.id, p.descricao, p.preco, t.descricao AS descrição_do_tipo
+DELETE FROM produtos where id = 1;
+-- SELECT * FROM produtos;
+SELECT p.id, p.descricao, p.preco, t.descricao AS descrição_do_tipo, t.categoria
 	FROM produtos AS p, tipos_produto AS t
 	WHERE p.codigo_tipo = t.id;
 
+-- ALTER TABLE tipos_produto ADD categoria
+-- SELECT * FROM tipos_produto;
