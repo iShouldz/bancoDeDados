@@ -1,35 +1,35 @@
 CREATE TABLE "generos" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "genero" varchar NOT NULL
 );
 
 CREATE TABLE "filmes" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "titulo" varchar NOT NULL,
   "id_generos" int NOT NULL,
   "valor" decimal(8,2) NOT NULL
 );
 
 CREATE TABLE "dvds" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "id_filme" int NOT NULL,
   "quantidade" int NOT NULL
 );
 
 CREATE TABLE "atores" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "nome" varchar NOT NULL
 );
 
 CREATE TABLE "atores_filme" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "id_filme" int NOT NULL,
   "id_ator" int NOT NULL,
   "personagem" varchar
 );
 
 CREATE TABLE "clientes" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "nome" varchar NOT NULL,
   "sobrenome" varchar NOT NULL,
   "endereco" varchar NOT NULL,
@@ -37,25 +37,25 @@ CREATE TABLE "clientes" (
 );
 
 CREATE TABLE "emprestimos" (
-  "id" int PRIMARY KEY,
-  "data" datetime NOT NULL,
+  "id" SERIAL PRIMARY KEY,
+  "data" date NOT NULL,
   "id_cliente" int NOT NULL
 );
 
 CREATE TABLE "filmes_emprestimo" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "id_emprestimo" int NOT NULL,
   "id_filme" int NOT NULL
 );
 
 CREATE TABLE "devolucoes" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "id_emprestimo" int NOT NULL,
-  "data" datetime NOT NULL
+  "data" date NOT NULL
 );
 
 CREATE TABLE "filmes_devolucao" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "id_devolucao" int NOT NULL,
   "id_filme_emprestimo" int NOT NULL
 );
@@ -79,3 +79,5 @@ ALTER TABLE "devolucoes" ADD FOREIGN KEY ("id_emprestimo") REFERENCES "emprestim
 ALTER TABLE "filmes_devolucao" ADD FOREIGN KEY ("id_devolucao") REFERENCES "devolucoes" ("id");
 
 ALTER TABLE "filmes_devolucao" ADD FOREIGN KEY ("id_filme_emprestimo") REFERENCES "filmes_emprestimo" ("id");
+
+SELECT * FROM filmes;
