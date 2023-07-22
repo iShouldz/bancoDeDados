@@ -45,7 +45,7 @@ CREATE TABLE "emprestimos" (
 CREATE TABLE "filmes_emprestimo" (
   "id" SERIAL PRIMARY KEY,
   "id_emprestimo" int NOT NULL,
-  "id_filme" int NOT NULL
+  "id_dvd" int NOT NULL
 );
 
 CREATE TABLE "devolucoes" (
@@ -72,7 +72,7 @@ ALTER TABLE "emprestimos" ADD FOREIGN KEY ("id_cliente") REFERENCES "clientes" (
 
 ALTER TABLE "filmes_emprestimo" ADD FOREIGN KEY ("id_emprestimo") REFERENCES "emprestimos" ("id");
 
-ALTER TABLE "filmes_emprestimo" ADD FOREIGN KEY ("id_filme") REFERENCES "filmes" ("id");
+ALTER TABLE "filmes_emprestimo" ADD FOREIGN KEY ("id_dvd") REFERENCES "dvds" ("id");
 
 ALTER TABLE "devolucoes" ADD FOREIGN KEY ("id_emprestimo") REFERENCES "emprestimos" ("id");
 
