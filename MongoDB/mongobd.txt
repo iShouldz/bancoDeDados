@@ -1,0 +1,51 @@
+db.inscricoes.insert(
+	{
+		"aluno": "Fernanda da Silva",
+		"data": new Date(), 
+		"curso": {
+			"nome": "BCC"
+		},
+		"notas": [9.0, 7.0, 8.0],
+		"skills": [
+			{
+				"nome": "Python",
+				"nivel": "avançado"
+			},
+			{
+				"nome": "BD",
+				"nivel": "avançado"
+			}
+		]
+	}
+)
+
+db.inscricoes.find(
+	{
+		"skills.nome": "Python", "skills.nivel": "avançado"
+	}
+).pretty()
+
+db.inscricoes.find(
+	{
+		"curso.nome": "BCC"
+	}
+).pretty()
+
+# Retorna os dados q seja com o nome do curso é um dos dois 
+db.inscricoes.find(
+	{
+		$or:[
+			{"curso.nome": "BCC"},
+			{"curso.nome": "BCC2"}
+		]
+	}
+	
+#Busca os dados da skills python e ele sendo intermediario ou avançado	
+db.inscricoes.find(
+	{
+		"skills.nome": "Python",
+		"skills.nivel": {
+			$in: ["avançado", "intermediario"]
+		}
+	}
+).pretty()
