@@ -101,7 +101,7 @@ db.inscricoes.update(
 	}
 )
 
-#Adicionar dados no array interno
+#Adicionar dados no array interno, so que so adiciona um valor
 db.inscricoes.update(
 	{"_id" : ObjectId("64bed44ad2b6af068fd166d2")},
 	{
@@ -111,4 +111,14 @@ db.inscricoes.update(
 	}
 )
 
-db.inscricoes.remove
+#Adicionar varios dados no array interno
+db.inscricoes.update(
+	{"_id" : ObjectId("64bed44ad2b6af068fd166d2")},
+	{
+		$push: {
+			notas:{
+				$each:[9.2, 5]
+			}
+		}
+	}
+)
