@@ -49,3 +49,66 @@ db.inscricoes.find(
 		}
 	}
 ).pretty()
+
+db.inscricoes.insert(
+	{
+		"aluno": "Guilhermina Dantas",
+		"data": new Date(),
+		"curso": {
+			"nome": "programação"
+		}, 
+		"notas": [7, 8.5, 10]	
+	}
+)
+
+db.inscricoes.insert(
+	{
+		"aluno": "Angela Dantas",
+		"data": new Date(),
+		"curso": {
+			"nome": "Programação"
+		}, 
+		"notas": [7.4, 8.7, 9.5]	
+	}
+)
+
+db.inscricoes.find(
+	{
+		"curso.nome": "Programação"
+	}
+)
+
+Parametros do update: Primeiro é o where, o segundo é como deve ficar a alteração, o set é para aualizar esse valor e n apagar os outros, igual no sql
+db.inscricoes.update(
+	{"curso.nome": "programção"},
+	{
+		$set:{
+			"curso.nome": "Programação"
+		}
+	}
+)
+
+Para atualizar multiplos documentos:
+db.inscricoes.update(
+	{"curso.nome": "programção"},
+	{
+		$set:{
+			"curso.nome": "Programação"
+		}
+	},
+	{
+		multi:true
+	}
+)
+
+#Adicionar dados no array interno
+db.inscricoes.update(
+	{"_id" : ObjectId("64bed44ad2b6af068fd166d2")},
+	{
+		$push: {
+			notas: 6.7
+		}
+	}
+)
+
+db.inscricoes.remove
