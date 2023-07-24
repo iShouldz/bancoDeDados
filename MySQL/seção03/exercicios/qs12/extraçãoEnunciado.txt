@@ -1,0 +1,55 @@
+[1]
+Uma faculdade oferece varios cursos que são compostos por diversas disciplinas
+- Entidades:
+* Faculdade(id, id_curso)
+* Trabalhadores(id, id_trabalhador) (vinculular prof e func)
+
+[2]
+Cada disciplina pode ser oferecida para varios cursos distintos
+* Cursos(id, nome, id_disciplina)
+
+[3]
+Uma disciplina pode ter outras disciplinas como pre requisitos em serie ou em paralelo
+- Entidades:
+* Disciplina(id, nome, id_pre_requisitos, id_professor)
+* Pre_requisitos(id, id_tipo)
+* Pre_serie(id, nome)
+* Pre_paralelo(id, nome)
+
+[4]
+Na faculdade há diferentes tipos de pessoas identificadas por um único número funcional: os alunos, professores e funcionarios, cada qual com seus atributos gerais e especificos. Os alunos so podem estar escritos em um unico curso em dado momento (status ativo), e so poderão se inscrever em outro curso caso todas as suas inscrições estejam finalizadas (status concluido), são armazenadas informações de ano de inicio e termino.
+- Entidades:
+* Pessoas(id, nome, numero_func)
+* Alunos(id, matricula, curso_inscrito, id_status_curso_aluno)
+* status_curso_aluno(id, status)
+* status_ativo(id, id_curso)
+* status_concluido(id, id_cursos, ano_inicio, ano_termino)
+* Professores(id, cadastroProfessor)
+* Funcionarios(id, funcao)
+
+[5] 
+Em cada semestre, os alunos se matriculam-se em turmas correspondentes às disciplinas do seu curso.
+- Entidades:
+* matricula(id, id_aluno, id_lista_disciplinas)
+* lista_disciplinas(id, id_aluno, id_disciplina) 
+
+[6]
+Professores podem ministrar para varias turmas e toda turma tem um professor
+- Entidades:
+* Ministrar(id, id_professor, id_turma)
+* turma(id, id_aluno)
+
+[7]
+Os funcionarios auxiliam os professores, sem exclusividade
+
+
+[8]
+Tanto os professores quanto os funcionarios podem decidir se matricular em um curso da universidade com as devidas restrições
+- Entidades:
+* matricula_excepcional(id, id_curso,id_trabalhadores)
+
+[9]
+(boletim geral da turma)
+Deve permitir a geração da lista de notas para cada turma, onde deve constar com que professor um aluno fez qual disciplina.
+- Entidades:
+* Boletim(id, id_aluno, id_professor, nota)
