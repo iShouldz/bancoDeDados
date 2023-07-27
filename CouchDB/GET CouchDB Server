@@ -1,0 +1,1 @@
+{"couchdb":"Welcome","version":"3.3.2","git_sha":"11a234070","uuid":"2ec4963b01c04f3dd1487fb49d9fd44e","features":["access-ready","partitioned","pluggable-storage-engines","reshard","scheduler"],"vendor":{"name":"The Apache Software Foundation"}}
