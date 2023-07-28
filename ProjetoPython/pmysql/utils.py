@@ -62,7 +62,22 @@ def atualizar():
     """
     Função para atualizar um produto
     """
-    print('Atualizando produto...')
+    conn = conectar()
+    cursor = conn.cursor()
+
+    id = input('Código do produto: ')
+    nome = input('Novo nome do produto: ')
+    preco = input('Novo valor do produto: ')
+    estoque = input('Nova quantidade em estoque: ')
+
+    cursor.execute(f"UPDATE FROM produtos SET nome = '{nome}', preco = {preco}, estoque = {estoque} WHERE id = {id}")
+    conn.commit()
+
+    if cursor.rowcount == 1:
+        print("ATUALIZAÇÃO COM SUCESSO")
+    else:
+        print("FALHA NA ATUALIZAÇÃO")
+    desconectar(conn)
 
 def deletar():
     """
