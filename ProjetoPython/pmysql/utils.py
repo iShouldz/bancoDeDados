@@ -82,8 +82,20 @@ def atualizar():
 def deletar():
     """
     Função para deletar um produto
-    """  
-    print('Deletando produto...')
+    """
+    conn = conectar()
+    cursor = conn.cursor()
+
+    id = input('Código do produto: ')
+
+    cursor.execute(f"DELETE FROM produtos WHERE id={id}")
+    conn.commit()
+
+    if cursor.rowcount == 1:
+        print("DELEÇÃO COM SUCESSO")
+    else:
+        print("FALHA NA DELEÇÃO")
+    desconectar(conn)
 
 def menu():
     """
@@ -95,7 +107,9 @@ def menu():
     print('2 - Inserir produtos.')
     print('3 - Atualizar produto.')
     print('4 - Deletar produto.')
+    print('0 - Encerrar querry')
     opcao = int(input())
+    while()
     if opcao in [1, 2, 3, 4]:
         if opcao == 1:
             listar()
