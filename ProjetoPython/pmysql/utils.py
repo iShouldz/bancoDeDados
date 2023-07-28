@@ -1,8 +1,18 @@
+import MySQLdb
+
 def conectar():
     """
     Função para conectar ao servidor
     """
-    print('Conectando ao servidor...')
+    try:
+        conn = MySQLdb.connect(
+            db='pmysql',
+            host='localhost',
+            user='shz',
+            passwd='shouldz'
+        )
+    except MySQLdb.Error as e:
+        print(f"Erro na conexão ao MySQL Server {e}")
 
 def desconectar():
     """ 
@@ -49,6 +59,7 @@ def menu():
     if opcao in [1, 2, 3, 4]:
         if opcao == 1:
             listar()
+            conectar()
         elif opcao == 2:
             inserir()
         elif opcao == 3:
