@@ -14,11 +14,12 @@ def conectar():
     except MySQLdb.Error as e:
         print(f"Erro na conexão ao MySQL Server {e}")
 
-def desconectar():
+def desconectar(conn):
     """ 
     Função para desconectar do servidor.
     """
-    print('Desconectando do servidor...')
+    if conn:
+        conn.close()
 
 
 def listar():
