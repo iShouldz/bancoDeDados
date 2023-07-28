@@ -26,7 +26,8 @@ def listar():
     """
     Função para listar os produtos
     """
-    print('Listando produtos...')
+    conn = conectar()
+
 
 def inserir():
     """
