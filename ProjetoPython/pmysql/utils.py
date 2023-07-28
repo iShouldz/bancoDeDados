@@ -43,8 +43,15 @@ def listar():
 def inserir():
     """
     Função para inserir um produto
-    """  
-    print('Inserindo produto...')
+    """
+    conn = conectar()
+    cursor = conn.cursor()
+    nome = input('Nome do produto: ')
+    preco = input('Valor do produto: ')
+    estoque = input('Quantidade em estoque: ')
+
+    cursor.execute(f"INSERT INTO produtos (nome, preco, estoque) VALUES  ('{nome}', {preco}, {estoque})")
+    conn.commit()
 
 def atualizar():
     """
