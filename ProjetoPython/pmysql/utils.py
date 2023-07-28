@@ -70,7 +70,7 @@ def atualizar():
     preco = input('Novo valor do produto: ')
     estoque = input('Nova quantidade em estoque: ')
 
-    cursor.execute(f"UPDATE FROM produtos SET nome = '{nome}', preco = {preco}, estoque = {estoque} WHERE id = {id}")
+    cursor.execute(f"UPDATE produtos SET nome = '{nome}', preco = {preco}, estoque = {estoque} WHERE id = {id}")
     conn.commit()
 
     if cursor.rowcount == 1:
@@ -97,10 +97,7 @@ def deletar():
         print("FALHA NA DELEÇÃO")
     desconectar(conn)
 
-def menu():
-    """
-    Função para gerar o menu inicial
-    """
+def frontend():
     print('=========Gerenciamento de Produtos==============')
     print('Selecione uma opção: ')
     print('1 - Listar produtos.')
@@ -108,18 +105,26 @@ def menu():
     print('3 - Atualizar produto.')
     print('4 - Deletar produto.')
     print('0 - Encerrar querry')
+
+def menu():
+    """
+    Função para gerar o menu inicial
+    """
+    frontend()
     opcao = int(input())
-    while()
-    if opcao in [1, 2, 3, 4]:
-        if opcao == 1:
-            listar()
-        elif opcao == 2:
-            inserir()
-        elif opcao == 3:
-            atualizar()
-        elif opcao == 4:
-            deletar()
+    while opcao != 0:
+        if opcao in [1, 2, 3, 4]:
+            if opcao == 1:
+                listar()
+            elif opcao == 2:
+                inserir()
+            elif opcao == 3:
+                atualizar()
+            elif opcao == 4:
+                deletar()
+            else:
+                print('Opção inválida')
         else:
             print('Opção inválida')
-    else:
-        print('Opção inválida')
+        frontend()
+        opcao = int(input())
