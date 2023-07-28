@@ -52,6 +52,11 @@ def inserir():
 
     cursor.execute(f"INSERT INTO produtos (nome, preco, estoque) VALUES  ('{nome}', {preco}, {estoque})")
     conn.commit()
+    if cursor.rowcount == 1:
+        print("INSERÇÃO COM SUCESSO")
+    else:
+        print("FALHA DE INSERÇÃO")
+    desconectar(conn)
 
 def atualizar():
     """
