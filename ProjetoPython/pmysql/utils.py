@@ -11,6 +11,7 @@ def conectar():
             user='shz',
             passwd='shouldz'
         )
+        return conn
     except MySQLdb.Error as e:
         print(f"Erro na conexão ao MySQL Server {e}")
 
@@ -27,7 +28,17 @@ def listar():
     Função para listar os produtos
     """
     conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM produtos')
+    produtos = cursor.fetchall()
 
+    if len(produtos) > 0:
+        print("Listando produtos: ")
+        for produto in produtos:
+            print(f"ID: {produto[0]}\nNOME: {produto[1]}\nPRECO: {produto[2]}, ESTOQUE: {produto[3]}\n")
+    else:
+        print("Não existe produtos cadastrados")
+    desconectar(conn)
 
 def inserir():
     """
@@ -61,7 +72,6 @@ def menu():
     if opcao in [1, 2, 3, 4]:
         if opcao == 1:
             listar()
-            conectar()
         elif opcao == 2:
             inserir()
         elif opcao == 3:
