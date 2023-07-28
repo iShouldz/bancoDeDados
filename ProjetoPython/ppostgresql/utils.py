@@ -77,12 +77,24 @@ def atualizar():
         print("Atualização com sucesso")
     else:
         print("Falha na atualização")
+    desconectar(conn)
 def deletar():
     """
     Função para deletar um produto
     """  
-    print('Deletando produto...')
+    conn = conectar()
+    cursor = conn.cursor()
 
+    codigo = int(input('Codigo do produto: '))
+
+    cursor.execute(f"DELETE FROM produtos WHERE id={codigo}")
+    conn.commit()
+
+    if cursor.rowcount == 1:
+        print("Removido com sucesso")
+    else:
+        print("Falha na remoção")
+    desconectar(conn)
 def menu():
     """
     Função para gerar o menu inicial
